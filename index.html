@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>jackii</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>jackii</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="banner">
-    <h1 class="site-title">jackii</h1>
+    <div class="site-title">
+      <span class="title-main">jackii</span><br>
+      <span class="title-sub">unseen</span>
+    </div>
   </div>
 
   <main class="content">
@@ -17,10 +20,7 @@
 
   <script>
     fetch('photos.json')
-      .then(response => {
-        if (!response.ok) throw new Error('Could not load photos.json');
-        return response.json();
-      })
+      .then(res => res.json())
       .then(photos => {
         const gallery = document.getElementById('gallery');
         photos.forEach(photo => {
@@ -30,9 +30,7 @@
           gallery.appendChild(img);
         });
       })
-      .catch(error => {
-        console.error('Error loading photos:', error);
-      });
+      .catch(err => console.error('Error loading photos:', err));
   </script>
 </body>
 </html>
