@@ -48,38 +48,34 @@ body {
   padding: 5px;
 }
 
-/* Gallery grid using CSS columns */
+/* Responsive image grid using flex */
 .gallery {
-  column-count: 5;
-  column-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .gallery img {
-  width: 100%;
-  aspect-ratio: 1 / 1;       /* Make square */
-  object-fit: cover;         /* Fill the square without distortion */
-  margin-bottom: 8px;
+  max-width: calc(20% - 8px);
+  height: auto;
   display: block;
+  object-fit: cover;
+  border-radius: 0;
   box-shadow: none;
-  border-radius: 0;          /* No rounded corners */
   transition: none;
-  break-inside: avoid;
 }
 
-.gallery img:hover {
-  transform: none;
-}
-
-/* Responsive column count */
+/* Responsive adjustments */
 @media (max-width: 1200px) {
-  .gallery { column-count: 4; }
+  .gallery img { max-width: calc(25% - 8px); }
 }
 @media (max-width: 900px) {
-  .gallery { column-count: 3; }
+  .gallery img { max-width: calc(33.333% - 8px); }
 }
 @media (max-width: 600px) {
-  .gallery { column-count: 2; }
+  .gallery img { max-width: calc(50% - 8px); }
 }
 @media (max-width: 400px) {
-  .gallery { column-count: 1; }
+  .gallery img { max-width: 100%; }
 }
