@@ -1,52 +1,84 @@
-/* Global reset */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Body styling */
 body {
   font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
   background-color: #f9f9f9;
   color: #333;
 }
 
-/* Banner styles */
+/* Banner */
 .banner {
   width: 100%;
   padding: 12px 0;
-  background: linear-gradient(to right, #a100ff, #ffeb00); /* Purple to yellow */
+  background: linear-gradient(to right, #a100ff, #ffeb00);
   text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .site-title {
   font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 200;  /* Ultra light / Thin */
+  font-weight: 200;
   color: white;
   font-size: 2.5rem;
-  letter-spacing: 0.25em; /* spacing between letters */
+  letter-spacing: 0.25em;
   text-transform: lowercase;
   margin: 0;
 }
 
-/* Photo gallery layout */
+/* Content wrapper to allow full width */
+.content {
+  width: 100vw;
+  padding: 10px;
+}
+
+/* Responsive masonry-like gallery */
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
+  column-count: 5;           /* 5 columns on large screens */
+  column-gap: 10px;
 }
 
 .gallery img {
   width: 100%;
+  margin-bottom: 10px;
+  display: block;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
+  break-inside: avoid;      /* Prevent images from breaking between columns */
 }
 
 .gallery img:hover {
   transform: scale(1.03);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  .gallery {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 400px) {
+  .gallery {
+    column-count: 1;
+  }
 }
