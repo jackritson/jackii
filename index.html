@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Photo Blog</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="banner">
-  <h1 class="site-title">jackii</h1>
-</div>
+    <h1 class="site-title">My Photo Blog</h1>
+  </div>
+
   <div class="gallery" id="gallery"></div>
 
   <script>
@@ -21,9 +23,4 @@
           const img = document.createElement('img');
           img.src = `photos/${photo}`;
           img.alt = photo;
-          gallery.appendChild(img);
-        });
-      });
-  </script>
-</body>
-</html>
+          gallery.ap
