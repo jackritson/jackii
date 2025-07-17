@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>jackii</title>
+<title>jackii's Photo Blog</title>
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -16,16 +16,23 @@
   </main>
 
   <script>
-    // Example photos array
-    const photos = ['photo1.jpeg', 'photo2.jpeg', 'photo3.jpeg'];
-
-    const gallery = document.getElementById('gallery');
-    photos.forEach(photo => {
-      const img = document.createElement('img');
-      img.src = `photos/${photo}`;
-      img.alt = photo;
-      gallery.appendChild(img);
-    });
+    fetch('photos.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Could not load photos.json');
+        return response.json();
+      })
+      .then(photos => {
+        const gallery = document.getElementById('gallery');
+        photos.forEach(photo => {
+          const img = document.createElement('img');
+          img.src = `photos/${photo}`;
+          img.alt = photo;
+          gallery.appendChild(img);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading photos:', error);
+      });
   </script>
 </body>
 </html>
