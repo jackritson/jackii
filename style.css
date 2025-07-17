@@ -1,29 +1,22 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styling */
 body {
   font-family: sans-serif;
-  text-align: center;
-  background: #f9f9f9;
-  margin: 0;
-  padding: 1rem;
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 0;
 }
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  padding: 10px;
-}
-.gallery img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-/* --- Banner Styles --- */
 
-/* Import the font (if not in index.html already) */
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-
+/* Banner styles */
 .banner {
   width: 100%;
-  padding: 10px 0;
+  padding: 12px 0;
   background: linear-gradient(to right, #a100ff, #ffeb00); /* Purple to yellow */
   text-align: center;
 }
@@ -31,7 +24,27 @@ body {
 .site-title {
   font-family: 'Monoton', cursive;
   color: white;
-  font-size: 2rem;
-  margin: 0;
+  font-size: 2.2rem;
   letter-spacing: 2px;
+}
+
+/* Photo gallery layout */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
 }
