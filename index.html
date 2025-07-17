@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Photo Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>My Photo Blog</h1>
+  <div class="gallery" id="gallery"></div>
 
+  <script>
+    fetch('photos.json')
+      .then(response => response.json())
+      .then(photos => {
+        const gallery = document.getElementById('gallery');
+        photos.forEach(photo => {
+          const img = document.createElement('img');
+          img.src = `photos/${photo}`;
+          img.alt = photo;
+          gallery.appendChild(img);
+        });
+      });
+  </script>
+</body>
+</html>
