@@ -16,3 +16,22 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+/* --- Banner Styles --- */
+
+/* Import the font (if not in index.html already) */
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+.banner {
+  width: 100%;
+  padding: 10px 0;
+  background: linear-gradient(to right, #a100ff, #ffeb00); /* Purple to yellow */
+  text-align: center;
+}
+
+.site-title {
+  font-family: 'Monoton', cursive;
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 2px;
+}
