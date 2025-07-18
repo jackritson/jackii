@@ -1,3 +1,9 @@
+console.log('cloud_name:', process.env.CLOUDINARY_CLOUD_NAME ? 'exists' : 'missing');
+console.log('api_key:', process.env.CLOUDINARY_API_KEY ? 'exists' : 'missing');
+console.log('api_secret:', process.env.CLOUDINARY_API_SECRET ? 'exists' : 'missing');
+
+
+
 const fs = require('fs');
 const cloudinary = require('cloudinary').v2;
 
