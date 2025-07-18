@@ -1,38 +1,37 @@
 name: Update Cloudinary Photo List
 
+permissions:
+  contents: write  # Allow the action to push changes
+
 on:
   push:
     branches: [main]
   schedule:
-    - cron: '0 * * * *' # Every hour
+    - cron: '0 * * * *'  # Run every hour
 
 jobs:
   update-photos:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
 
-      - name: Install Cloudinary SDK
-        run: npm install cloudinary
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run photo list generator
-        run: node scripts/updatePhotos.js
-        env:
-          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
-          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
-          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+      - name: Run update script
+        run: node scripts/updatephotos.js  # ✅ Uses correct filename
 
-      - name: Commit and push photos.json
+      - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add photos.json
-          git commit -m "Auto-update photos.json" || echo "No changes"
+          git commit -m "Auto-update photos.json" || echo "No changes to commit"
           git push
