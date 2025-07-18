@@ -119,13 +119,6 @@
     "height": 1024
   },
   {
-    "url": "https://res.cloudinary.com/dqumlaa9z/image/upload/v1752841123/jackii/photo24.jpg",
-    "public_id": "jackii/photo24",
-    "format": "jpg",
-    "width": 768,
-    "height": 1024
-  },
-  {
     "url": "https://res.cloudinary.com/dqumlaa9z/image/upload/v1752841123/jackii/photo22.jpg",
     "public_id": "jackii/photo22",
     "format": "jpg",
@@ -187,6 +180,13 @@
     "format": "jpg",
     "width": 767,
     "height": 1024
+  },
+  {
+    "url": "https://res.cloudinary.com/dqumlaa9z/image/upload/v1752841473/jackii/IMG_1350.jpg",
+    "public_id": "jackii/IMG_1350",
+    "format": "jpg",
+    "width": 2221,
+    "height": 2961
   },
   {
     "url": "https://res.cloudinary.com/dqumlaa9z/image/upload/v1752837099/jackii/IMG_1093.jpg",
