@@ -21,12 +21,11 @@
 
   <script>
     const cloudName = 'dqumlaa9z';
-    const folder = 'jackii';
-
+    const tag = 'jackii';
     const gallery = document.getElementById('gallery');
-    gallery.innerHTML = ''; // Clear "Loading..."
+    gallery.innerHTML = '';
 
-    fetch(`https://res.cloudinary.com/${cloudName}/image/list/${folder}.json`)
+    fetch(`https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`)
       .then(res => res.json())
       .then(data => {
         data.resources.forEach(photo => {
@@ -37,8 +36,8 @@
         });
       })
       .catch(err => {
-        console.error('Could not load images. Check your folder or preset settings.', err);
-        gallery.innerHTML = '<p style="padding: 20px;">Could not load images. Make sure your Cloudinary folder is public and the image list API is enabled.</p>';
+        console.error('Error loading images:', err);
+        gallery.innerHTML = '<p style="padding: 20px; color: red;">Could not load images. Make sure uploads are tagged correctly and the tag list is enabled.</p>';
       });
   </script>
 </body>
