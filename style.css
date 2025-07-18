@@ -48,7 +48,7 @@ body {
   padding: 5px;
 }
 
-/* Responsive image grid using flex */
+/* Responsive image grid */
 .gallery {
   display: flex;
   flex-wrap: wrap;
