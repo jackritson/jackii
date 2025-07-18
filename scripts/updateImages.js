@@ -10,12 +10,12 @@ cloudinary.config({
 (async () => {
   try {
     const result = await cloudinary.search
-      .expression('folder:jackii')
+      .expression('folder:jackii') // match your upload folder
       .sort_by('public_id', 'desc')
       .max_results(100)
       .execute();
 
-    const images = result.resources.map(img => ({
+    const photos = result.resources.map(img => ({
       url: img.secure_url,
       public_id: img.public_id,
       format: img.format,
@@ -23,10 +23,10 @@ cloudinary.config({
       height: img.height,
     }));
 
-    fs.writeFileSync('images.json', JSON.stringify(images, null, 2));
-    console.log('✅ Image list updated!');
+    fs.writeFileSync('photos.json', JSON.stringify(photos, null, 2));
+    console.log('✅ Created photos.json');
   } catch (err) {
-    console.error('❌ Failed to update image list:', err.message);
+    console.error('❌ Failed to fetch Cloudinary images:', err.message);
     process.exit(1);
   }
 })();
