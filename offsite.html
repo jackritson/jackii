@@ -12,21 +12,28 @@
   <button id="upload_widget_opener" style="font-size: 16px; padding: 10px 20px;">Upload Photo</button>
 
   <script>
-    const myWidget = cloudinary.createUploadWidget(
-      {
-        cloudName: 'dqumlaa9z',
-        uploadPreset: 'jackii-unsigned',
-        folder: 'jackii',
-        tags: ['jackii']
-      },
-      (error, result) => {
-        if (!error && result && result.event === 'success') {
-          alert('Upload successful: ' + result.info.original_filename);
-        } else if (error) {
-          alert('Upload failed: ' + error.message);
+    // Wait for Cloudinary widget script to load
+    document.addEventListener('DOMContentLoaded', function () {
+      const myWidget = cloudinary.createUploadWidget(
+        {
+          cloudName: 'dqumlaa9z',
+          uploadPreset: 'jackii-unsigned',
+          folder: 'jackii',
+          tags: ['jackii']
+        },
+        (error, result) => {
+          if (!error && result && result.event === 'success') {
+            alert('Upload successful: ' + result.info.original_filename);
+          } else if (error) {
+            alert('Upload failed: ' + error.message);
+          }
         }
-      }
-    );
+      );
 
-    document.getElementById('upload_widget_opener')
-      .addEventListener('click', () => myWidget.open()
+      document.getElementById('upload_widget_opener').addEventListener('click', function () {
+        myWidget.open();
+      }, false);
+    });
+  </script>
+</body>
+</html>
