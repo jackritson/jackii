@@ -33,10 +33,13 @@
           gallery.innerHTML = '<p style="padding: 20px; color: gray;">No photos found.</p>';
           return;
         }
+        // Sort images by created_at descending (newest first)
+        images.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
         images.forEach(photo => {
           const img = document.createElement('img');
           img.src = photo.url;
-          img.alt = photo.public_id;
+          img.alt = photo.public_id || '';
           gallery.appendChild(img);
         });
       })
