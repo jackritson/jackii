@@ -10,7 +10,7 @@
 <body>
   <div class="banner">
     <div class="site-title">
-      <span class="title-main">jackii</span><br>
+      <span class="title-main">jackii</span><br />
       <span class="title-sub">the photo album</span>
     </div>
   </div>
@@ -20,11 +20,10 @@
   </main>
 
   <script>
-    // Cloudinary Config
+    // Cloudinary config
     const cloudName = 'dqumlaa9z';
     const folderName = 'jackii';
 
-    // Cloudinary API URL (Unauthenticated)
     const apiURL = `https://res.cloudinary.com/${cloudName}/image/list/${folderName}.json`;
 
     fetch(apiURL)
@@ -32,8 +31,10 @@
       .then(data => {
         const gallery = document.getElementById('gallery');
 
-        // Sort by uploaded date descending
-        const images = data.resources.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        // Sort images newest first
+        const images = data.resources.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
 
         images.forEach(photo => {
           const img = document.createElement('img');
@@ -45,7 +46,8 @@
       .catch(err => {
         console.error('Error loading Cloudinary images:', err);
         const gallery = document.getElementById('gallery');
-        gallery.innerHTML = '<p style="color: red;">Could not load images. Please check folder name or image privacy settings.</p>';
+        gallery.innerHTML =
+          '<p style="color: red;">Could not load images. Check your folder or preset settings.</p>';
       });
   </script>
 </body>
