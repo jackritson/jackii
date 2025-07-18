@@ -2,33 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>jackii offsite</title>
+  <title>Upload Photos - jackii</title>
   <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="favicon.png" />
   <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 </head>
 <body>
-  <button id="upload_widget_opener">Upload Photo</button>
+  <h2 style="font-family: sans-serif; padding: 20px;">Upload to jackii</h2>
+  <button id="upload_widget_opener" style="font-size: 16px; padding: 10px 20px;">Upload Photo</button>
 
   <script>
     const myWidget = cloudinary.createUploadWidget(
       {
         cloudName: 'dqumlaa9z',
         uploadPreset: 'jackii-unsigned',
+        folder: 'jackii',
+        tags: ['jackii']
       },
       (error, result) => {
         if (!error && result && result.event === 'success') {
-          alert('Upload successful: ' + result.info.public_id);
+          alert('Upload successful: ' + result.info.original_filename);
         } else if (error) {
-          alert('Upload error: ' + error.message);
+          alert('Upload failed: ' + error.message);
         }
       }
     );
 
-    document
-      .getElementById('upload_widget_opener')
-      .addEventListener('click', () => {
-        myWidget.open();
-      });
-  </script>
-</body>
-</html>
+    document.getElementById('upload_widget_opener')
+      .addEventListener('click', () => myWidget.open()
