@@ -1,12 +1,9 @@
 name: Update Photos
 
 on:
-  workflow_dispatch:      # Manually triggered from GitHub UI
-  push:
-    paths:
-      - scripts/updatephotos.js
+  workflow_dispatch:      # Manual trigger
   schedule:
-    - cron: '0 0 * * *'   # Runs daily at midnight UTC
+    - cron: '0 0 * * *'   # Daily at midnight UTC
 
 jobs:
   update:
@@ -32,9 +29,12 @@ jobs:
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
 
       - name: Commit and push updated photos.json
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${PAT_TOKEN}@github.com/jackritson/jackii.git
           git add photos.json
           git commit -m "Auto-update photos.json" || echo "No changes to commit"
-          git push
+          git push origin HEAD:main
