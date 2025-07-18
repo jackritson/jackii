@@ -23,9 +23,9 @@
     const gallery = document.getElementById('gallery');
     gallery.innerHTML = '';
 
-    fetch('images.json')
+    fetch('photos.json')
       .then(res => {
-        if (!res.ok) throw new Error('Could not load images.json');
+        if (!res.ok) throw new Error('Could not load photos.json');
         return res.json();
       })
       .then(images => {
